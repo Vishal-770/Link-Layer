@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { 
@@ -36,12 +36,12 @@ const SocialLink = ({ href, icon: Icon, label }: { href: string; icon: LucideIco
 );
 
 // -- Animation Variants --
-const FADE_UP = {
+const FADE_UP: Variants = {
   hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
 };
 
-const STAGGER = {
+const STAGGER: Variants = {
   hidden: { opacity: 0 },
   show: { opacity: 1, transition: { staggerChildren: 0.1 } }
 };
@@ -155,7 +155,7 @@ export default function AboutPage() {
                },
                {
                   title: "Operational Velocity",
-                  desc: "A dashboard designed for precision engineering, giving teams the birds-eye view required for high-volume sharing.",
+                  desc: "A dashboard designed for precision engineering, giving you the birds-eye view required for high-volume sharing.",
                   icon: Users2
                }
             ].map((value, i) => (

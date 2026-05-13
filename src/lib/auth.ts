@@ -11,7 +11,9 @@ if (!database) {
 
 export const auth = betterAuth({
   appName: "LinkShort",
-  database: mongodbAdapter(database),
+  database: mongodbAdapter(database, {
+    client: connection.connection.client,
+  }),
   socialProviders: {
     google: {
       clientId: process.env.GOOGLE_CLIENT_ID as string,

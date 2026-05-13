@@ -21,8 +21,8 @@ export async function POST(request: NextRequest) {
 
     await dbConnect();
 
-    const data: reqBody = await request.json();
-    const { originalUrl } = data;
+    const data: reqBody & { customSlug?: string } = await request.json();
+    const { originalUrl, customSlug } = data;
 
     if (!originalUrl) {
       return NextResponse.json(
@@ -32,6 +32,28 @@ export async function POST(request: NextRequest) {
     }
 
     const user = await ensureLocalUser(authUser);
+
+    let slug = customSlug?.trim();
+    if (slug) {
+      // Validate slug format (alphanumeric and hyphens only)
+      if (!/^[a-zA-Z0-9-]+$/.test(slug)) {
+        return NextResponse.json(
+          { message: "Custom slug can only contain letters, numbers, and hyphens", success: false },
+          { status: 400 },
+        );
+      }
+
+      // Check if slug is already taken
+      const existingSlug = await ShortUrl.findOne({ slug });
+      if (existingSlug) {
+        return NextResponse.json(
+          { message: "Custom slug is already in use", success: false },
+          { status: 400 },
+        );
+      }
+    } else {
+      slug = nanoid(8);
+    }
 
     // Safety Check: Google Safe Browsing
     const { checkUrlSafety } = await import("@/lib/safety");
@@ -47,7 +69,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const slug = nanoid(8);
     const userId = user._id;
     const shortUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/r/${slug}`;
     const qrCode = await QRCode.toDataURL(shortUrl);

@@ -1,63 +1,83 @@
-import { ArrowUpRight } from "lucide-react";
+import { Github, Globe, Mail, Twitter } from "lucide-react";
 import Link from "next/link";
 import { BrandLogo } from "@/components/BrandLogo";
-import { Badge } from "./ui/badge";
-// import { Separator } from "./ui/separator"; // Removed as unused
+
+
 
 export default function Footer() {
-  const links = {
-    Product: [
-      { label: "Overview", href: "/" },
-      { label: "Internal Features", href: "/features" },
-    ],
-    Company: [
-      { label: "About", href: "/about" },
-      { label: "Workspace Dashboard", href: "/dashboard" },
-      { label: "Account Access", href: "/signin" },
-    ],
-    Social: [
-      { label: "GitHub Source", href: "https://github.com/Vishal-770/Link-Layer" },
-      { label: "X / Twitter", href: "https://x.com/vishal_7707" },
-      { label: "Portfolio", href: "https://vishaldev.space" },
-    ],
-  };
+  const sections = [
+    {
+      title: "Product",
+      links: [
+        { label: "Overview", href: "/" },
+        { label: "Features", href: "/features" },
+        { label: "Pricing", href: "#" }, // Placeholder for future
+      ],
+    },
+    {
+      title: "Platform",
+      links: [
+        { label: "Dashboard", href: "/dashboard" },
+        { label: "Analytics", href: "/dashboard/analyze" },
+        { label: "QR Generator", href: "/dashboard" },
+      ],
+    },
+    {
+      title: "Company",
+      links: [
+        { label: "About", href: "/about" },
+        { label: "Security", href: "/features" },
+        { label: "Contact", href: "mailto:support@linklayer.com" },
+      ],
+    },
+    {
+      title: "Legal",
+      links: [
+        { label: "Privacy Policy", href: "/privacy" },
+        { label: "Terms of Service", href: "/terms" },
+        { label: "Cookie Policy", href: "#" },
+      ],
+    },
+  ];
 
   return (
-    <footer className="border-t border-primary/5 bg-background/50 backdrop-blur-xl">
-      <div className="page-shell py-20 pb-10">
-        <div className="grid gap-16 lg:grid-cols-[1.4fr_0.8fr_0.8fr]">
-          <div className="space-y-8">
+    <footer className="border-t border-border/40 bg-muted/20 pb-12 pt-24">
+      <div className="page-shell">
+        <div className="grid gap-12 lg:grid-cols-6 lg:gap-8">
+          <div className="lg:col-span-2 space-y-6">
             <BrandLogo />
-            <p className="max-w-md text-base leading-relaxed text-muted-foreground/80">
-              LinkLayer is an enterprise-grade URL infrastructure designed for teams who demand reliability, privacy-first analytics, and a seamless developer experience.
+            <p className="max-w-xs text-sm leading-relaxed text-muted-foreground font-medium italic">
+              A high-performance URL infrastructure for individuals who demand precision, security, and real-time analytics.
             </p>
-            <div className="flex flex-wrap gap-3">
-              <Badge variant="secondary" className="rounded-full px-4 py-1.5 bg-primary/5 text-primary border-primary/10">
-                High Speed Redirects
-              </Badge>
-              <Badge variant="secondary" className="rounded-full px-4 py-1.5 bg-primary/5 text-primary border-primary/10">
-                Neural Analytics
-              </Badge>
-              <Badge variant="secondary" className="rounded-full px-4 py-1.5 bg-primary/5 text-primary border-primary/10">
-                Custom Branding
-              </Badge>
+            <div className="flex items-center gap-4 text-muted-foreground">
+              <Link href="https://github.com/Vishal-770/Link-Layer" target="_blank" className="hover:text-primary transition-colors">
+                <Github className="h-5 w-5" />
+              </Link>
+              <Link href="https://x.com/vishal_7707" target="_blank" className="hover:text-primary transition-colors">
+                <Twitter className="h-5 w-5" />
+              </Link>
+              <Link href="https://vishaldev.space" target="_blank" className="hover:text-primary transition-colors">
+                <Globe className="h-5 w-5" />
+              </Link>
+              <Link href="mailto:support@linklayer.com" className="hover:text-primary transition-colors">
+                <Mail className="h-5 w-5" />
+              </Link>
             </div>
           </div>
 
-          {Object.entries(links).map(([title, group]) => (
-            <div key={title} className="space-y-6">
-              <h3 className="text-xs font-black uppercase tracking-[0.3em] text-foreground/40">
-                {title}
+          {sections.map((section) => (
+            <div key={section.title} className="space-y-6 lg:col-span-1">
+              <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-foreground/40">
+                {section.title}
               </h3>
               <div className="flex flex-col gap-4">
-                {group.map((link) => (
+                {section.links.map((link) => (
                   <Link
-                    key={link.href}
+                    key={link.label}
                     href={link.href}
-                    className="group inline-flex items-center gap-2 text-sm font-medium text-foreground/70 transition-all hover:text-primary"
+                    className="group inline-flex items-center gap-1 text-xs font-bold text-muted-foreground transition-all hover:text-primary uppercase tracking-widest"
                   >
                     {link.label}
-                    <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground/40 group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                   </Link>
                 ))}
               </div>
@@ -65,18 +85,16 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="mt-20 pt-8 border-t border-primary/5">
-           <div className="flex flex-col gap-6 text-xs font-medium text-muted-foreground/60 sm:flex-row sm:items-center sm:justify-between">
-              <div className="flex items-center gap-8">
-                 <p>© 2026 LinkLayer Infrastructure. All rights reserved.</p>
-                 <Link href="/privacy" className="hover:text-primary">Privacy Policy</Link>
-                 <Link href="/terms" className="hover:text-primary">Terms of Service</Link>
-              </div>
-              <p className="flex items-center gap-2">
-                 <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-                 All systems operational
-              </p>
-           </div>
+        <div className="mt-24 pt-8 border-t border-border/40 flex flex-col items-center justify-between gap-6 sm:flex-row">
+          <p className="text-[10px] font-bold text-muted-foreground/50 uppercase tracking-widest">
+            © 2026 LinkLayer Infrastructure. All rights reserved.
+          </p>
+          <div className="flex items-center gap-6">
+            <div className="flex items-center gap-2 text-[10px] font-bold text-emerald-500/60 uppercase tracking-widest">
+              <div className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              All Systems Operational
+            </div>
+          </div>
         </div>
       </div>
     </footer>

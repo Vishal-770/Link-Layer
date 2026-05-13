@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -89,9 +89,9 @@ const detailedFeatures = [
   },
   {
     title: "Branded Infrastructure",
-    description: "Total control over your link presence. Configure custom domains and slugs that reflect your identity. Our multi-tenant architecture ensures that your branded workspace is isolated, secure, and fast for team collaboration.",
+    description: "Total control over your link presence. Configure custom domains and slugs that reflect your identity. Our multi-tenant architecture ensures that your branded workspace is isolated, secure, and fast for your digital identity.",
     icon: Palette,
-    specs: ["Custom Slug Management", "Internal Metadata Labels", "Team Workspace Isolation"]
+    specs: ["Custom Slug Management", "Internal Metadata Labels", "Workspace Isolation"]
   },
   {
     title: "Real-time Delta Sync",
@@ -102,12 +102,12 @@ const detailedFeatures = [
 ];
 
 // -- Animation Variants --
-const FADE_UP = {
+const FADE_UP: Variants = {
   hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
 };
 
-const STAGGER = {
+const STAGGER: Variants = {
   hidden: { opacity: 0 },
   show: { opacity: 1, transition: { staggerChildren: 0.1 } }
 };
@@ -137,7 +137,7 @@ export default function FeaturesPage() {
               Calculated <br /> <span className="text-primary italic">Routes.</span>
             </h1>
             <p className="mx-auto max-w-2xl text-sm md:text-base lg:text-lg xl:text-xl text-muted-foreground font-bold leading-relaxed md:leading-relaxed italic border-l-2 border-primary/20 pl-4 md:pl-8 inline-block">
-               A high-density feature ecosystem designed for performance-first teams. Redis-accelerated, Safe Browsing hardened, globally atomic.
+               A high-density feature ecosystem designed for performance-first users. Redis-accelerated, Safe Browsing hardened, globally atomic.
             </p>
           </motion.div>
 
@@ -383,7 +383,7 @@ export default function FeaturesPage() {
          >
             <div className="p-10 lg:p-16 border-b border-border/10 bg-muted/20">
                <h3 className="text-3xl sm:text-4xl font-black tracking-tighter italic">LinkLayer vs <span className="text-muted-foreground/30 italic">Legacy Platforms.</span></h3>
-               <p className="text-muted-foreground mt-4 font-medium italic">Why performance teams choose our infrastructure over generic shorteners.</p>
+               <p className="text-muted-foreground mt-4 font-medium italic">Why performance users choose our infrastructure over generic shorteners.</p>
             </div>
             <div className="overflow-x-auto">
                <table className="w-full text-left border-collapse">

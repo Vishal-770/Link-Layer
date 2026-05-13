@@ -120,7 +120,6 @@ export default function HeroScene() {
           <LinkNetwork primaryColor={primaryColor} secondaryColor={secondaryColor} />
         </Float>
       </Canvas>
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/40 to-background" />
     </div>
   );
 }

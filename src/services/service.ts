@@ -7,8 +7,8 @@ const api = axios.create({
   withCredentials: true,
 });
 
-export async function AddNewUrl(originalUrl: string) {
-  const response = await api.post("/api/add-url", { originalUrl });
+export async function AddNewUrl(originalUrl: string, customSlug?: string) {
+  const response = await api.post("/api/add-url", { originalUrl, customSlug });
   return response.data;
 }
 
@@ -21,5 +21,9 @@ export async function DeleteUrl(slug: string) {
   const response = await api.delete("/api/delete-url", {
     data: { slug: slug },
   });
+  return response.data;
+}
+export async function UpdateUrlSlug(urlId: string, newSlug: string) {
+  const response = await api.patch("/api/update-slug", { urlId, newSlug });
   return response.data;
 }

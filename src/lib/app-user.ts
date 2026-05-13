@@ -22,10 +22,10 @@ export async function ensureLocalUser(authUser: AuthenticatedRequestUser) {
   const { firstName, lastName } = splitName(authUser.name);
 
   const user = await User.findOneAndUpdate(
-    { authUserId: authUser.id },
+    { authUserId: String(authUser.id) },
     {
       $setOnInsert: {
-        authUserId: authUser.id,
+        authUserId: String(authUser.id),
       },
       $set: {
         email: authUser.email || "",

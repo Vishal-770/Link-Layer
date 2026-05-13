@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { BarChart3, Globe2, ShieldCheck, Zap, Link2, Users } from "lucide-react";
+import { BarChart3, Globe2, ShieldCheck, Zap, Link2, QrCode } from "lucide-react";
 
 const FEATURES = [
   {
@@ -37,10 +37,10 @@ const FEATURES = [
     desc: "Pick a custom name for your link that's easy to remember and share.",
   },
   {
-    icon: Users,
-    stat: "Team",
-    label: "Share with Others",
-    desc: "Invite your team to manage links together in a shared workspace.",
+    icon: QrCode,
+    stat: "Print",
+    label: "Dynamic QR Engine",
+    desc: "Generate high-resolution QR codes with custom designs for every link.",
   },
 ];
 

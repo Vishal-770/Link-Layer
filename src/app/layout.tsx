@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     default: "LinkLayer | Enterprise URL Infrastructure & Analytics",
     template: "%s | LinkLayer",
   },
-  description: "Secure, fast URL infrastructure for modern teams. Featuring Redis-backed redirects, Safe Browsing protection, and real-time analytics.",
+  description: "Secure, fast URL infrastructure for modern digital experiences. Featuring Redis-backed redirects, Safe Browsing protection, and real-time analytics.",
   keywords: [
     "URL Shortener", 
     "Link Management", 

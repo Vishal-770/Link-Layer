@@ -17,7 +17,6 @@ import HorizontalWorkflow from "@/components/landing/HorizontalWorkflow";
 import TechnicalAccordion from "@/components/landing/TechnicalAccordion";
 import ScrollRevealCards from "@/components/landing/ScrollRevealCards";
 import StatCounters from "@/components/landing/StatCounters";
-import CodeTerminal from "@/components/landing/CodeTerminal";
 import FeatureToggle from "@/components/landing/FeatureToggle";
 
 function SplitTextContainer({ children, className = "", style }: { children: string; className?: string; style?: React.CSSProperties }) {
@@ -229,8 +228,6 @@ export default function Home() {
       {/* ── Stat Counters (New Component 1) ── */}
       <StatCounters />
 
-      {/* ── Code Terminal (New Component 2) ── */}
-      <CodeTerminal />
 
       {/* ── Feature Toggle Cards (New Component 3) ── */}
       <FeatureToggle />
@@ -248,8 +245,8 @@ export default function Home() {
             Join thousands of users and start creating smart links in seconds.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-3 md:gap-4 lg:gap-6 pt-2 md:pt-4 flex-wrap">
-            <Button asChild size="lg" className="h-11 md:h-14 lg:h-16 px-6 md:px-12 lg:px-16 rounded-lg md:rounded-xl font-black text-xs md:text-sm uppercase tracking-[0.1em] md:tracking-[0.2em] bg-primary border-none">
-              <Link href="/signin">Initiate Terminal</Link>
+            <Button asChild size="lg" className="h-11 md:h-14 lg:h-16 px-6 md:px-12 lg:px-16 rounded-lg md:rounded-xl font-black text-xs md:text-sm uppercase tracking-[0.1em] md:tracking-[0.2em] bg-primary border-none text-primary-foreground">
+              <Link href="/signin">Get Started</Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="h-11 md:h-14 lg:h-16 px-6 md:px-12 lg:px-16 rounded-lg md:rounded-xl font-black text-xs md:text-sm uppercase tracking-[0.1em] md:tracking-[0.2em] border-border/40 text-foreground bg-transparent">
               <Link href="#infra">Explore Features</Link>
